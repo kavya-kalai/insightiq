@@ -67,3 +67,4 @@ def test_latin1_encoding_fallback():
     assert result.row_count == 1
     assert result.dataframe is not None
     assert "René" in result.dataframe["name"].values
+
