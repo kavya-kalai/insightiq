@@ -1,0 +1,16 @@
+# Core Data Processing
+pandas>=2.2.0
+numpy>=1.26.0
+openpyxl>=3.1.2
+
+# Interactive Visualizations & UI
+plotly>=5.22.0
+streamlit>=1.35.0
+
+# AI & LLM Integration (Modern official Google GenAI SDK)
+google-genai>=1.0.0
+pydantic>=2.7.0
+
+# Environment & Testing
+python-dotenv>=1.0.1
+pytest>=8.2.0
