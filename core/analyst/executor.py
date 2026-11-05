@@ -262,3 +262,4 @@ def execute_plan(
         return computed_data, calc_str, cols_used, fig
 
     raise ValueError(f"Unsupported operation '{op}'")
+

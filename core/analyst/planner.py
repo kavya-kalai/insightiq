@@ -174,3 +174,4 @@ Return ONLY a valid JSON object matching the ExecutionPlan schema.
     except Exception:
         # Graceful fallback on 403, 429, connection errors, or JSON decode failure
         return rule_based_fallback_planner(question, df), True
+

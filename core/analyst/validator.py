@@ -89,3 +89,4 @@ def validate_plan(plan: ExecutionPlan, df: pd.DataFrame) -> tuple[bool, str]:
                 return False, f"Column '{plan.group_column}' does not have at least 2 distinct values to compare."
 
     return True, "Plan verified and approved for execution."
+

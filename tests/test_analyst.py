@@ -99,3 +99,4 @@ def test_analyst_honestly_rejects_out_of_scope_query(clean_sales_df: pd.DataFram
     assert res.is_success is False
     assert "cannot be safely mapped" in res.conclusion or "rejected" in res.limitations.lower()
     assert res.figure is None
+

@@ -193,3 +193,4 @@ Format your output as a JSON object with:
         return template_based_explainer(
             question, plan, computed_data, calc_str, cols_used, figure, df
         )
+
