@@ -102,3 +102,4 @@ def test_automatic_chart_selection(cleaned_sales_df: pd.DataFrame):
     name5, fig5 = recommend_chart(cleaned_sales_df, "product", "revenue")
     assert "Aggregation" in name5
     assert isinstance(fig5, go.Figure)
+
