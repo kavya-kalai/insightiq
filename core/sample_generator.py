@@ -12,6 +12,7 @@ Planted Issues:
 """
 
 from __future__ import annotations
+from datetime import datetime, timedelta
 from pathlib import Path
 import random
 import numpy as np
@@ -48,9 +49,8 @@ def generate_dirty_sales_data(num_rows: int = 2000, seed: int = 42) -> pd.DataFr
     marketing_spends = np.round(revenues * np.random.uniform(0.08, 0.22, size=num_rows) + 50.0, 2)
 
     # Dates spanning 12 months
-    start_date = pd.Timestamp("2024-01-01")
-    date_offsets = [pd.Timedelta(days=int(d)) for d in np.random.randint(0, 365, size=num_rows)]
-    base_dates = [start_date + offset for offset in date_offsets]
+    start_date = datetime(2024, 1, 1)
+    base_dates = [start_date + timedelta(days=int(d)) for d in np.random.randint(0, 365, size=num_rows)]
 
     # Format dates with MIXED representations (deliberate inconsistency)
     formatted_dates: list[str] = []
