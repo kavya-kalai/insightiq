@@ -1,8 +1,9 @@
 """InsightIQ AI Analyst Schemas & Data Contracts."""
 
 from __future__ import annotations
+from dataclasses import dataclass, field
 from typing import Any, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 OperationType = Literal[
@@ -39,19 +40,19 @@ class ExecutionPlan(BaseModel):
     unsupported_reason: str | None = None
 
 
-class AnalysisResult(BaseModel):
+@dataclass
+class AnalysisResult:
     """Complete, verified response returned to the user/UI."""
-    model_config = {"arbitrary_types_allowed": True}
-
     question: str
     is_success: bool
     operation: str
     conclusion: str
     calculation_performed: str
     computed_data: Any
-    columns_used: list[str]
-    limitations: str
-    suggested_next_question: str
-    figure: Any = None  # Plotly Figure
+    columns_used: list[str] = field(default_factory=list)
+    limitations: str = ""
+    suggested_next_question: str = ""
+    figure: Any = None  # Interactive Plotly Figure
     used_fallback: bool = False
     error_message: str | None = None
+

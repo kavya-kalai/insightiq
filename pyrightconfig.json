@@ -8,6 +8,7 @@
     "C:\\Users\\Kavya K\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages"
   ],
   "reportMissingImports": false,
-  "reportMissingModuleSource": false
+  "reportMissingModuleSource": false,
+  "reportUntypedBaseClass": false,
+  "reportGeneralTypeIssues": false
 }
-
