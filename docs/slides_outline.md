@@ -85,3 +85,4 @@
   - **Demonstrated Health Score Improvement:** Raw dataset score ($91.2$) $\rightarrow$ Cleaned dataset score ($92.6$), with 100% completeness, 100% uniqueness, and 100% validity.
 * **Closing:**
   > *"InsightIQ proves that AI can make analytics accessible to everyone without sacrificing accuracy, transparency, or security."*
+

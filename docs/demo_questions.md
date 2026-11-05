@@ -78,3 +78,4 @@ These 5 questions are pre-tested, verified, and mapped to the 5 supported operat
   - **Visualization:** Comparative two-bar chart.
   - **Columns Used:** `region`, `revenue`.
   - **Viva Highlight:** Show how the system handles comparative queries without writing custom SQL, validating that both regions exist in the categorical space before computing the delta.
+

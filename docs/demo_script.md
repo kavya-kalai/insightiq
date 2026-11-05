@@ -81,3 +81,4 @@
 1. **If Wi-Fi or API slows down:** Do not panic! InsightIQ has a built-in deterministic fallback engine that runs locally with 100% precision and zero latency.
 2. **If an evaluator asks you to upload a file:** Switch the sidebar radio button to "Upload CSV / Excel" and upload any test CSV; the profiler and analyst will immediately adapt to its schema.
 3. **If asked to show the code:** Open [`core/analyst/validator.py`](file:///c:/Users/Kavya%20K/OneDrive/Documents/GitHub/InSightIQ/core/analyst/validator.py) and [`core/analyst/executor.py`](file:///c:/Users/Kavya%20K/OneDrive/Documents/GitHub/InSightIQ/core/analyst/executor.py) to show the strict operation whitelist and pure Pandas execution.
+
