@@ -114,3 +114,4 @@ streamlit run app/main.py
 ```bash
 pytest tests/ -v
 ```
+

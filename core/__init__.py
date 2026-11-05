@@ -11,3 +11,4 @@ No UI code (Streamlit / FastAPI / React) is permitted in this package.
 """
 
 __version__ = "0.1.0"
+

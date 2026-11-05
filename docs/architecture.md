@@ -48,3 +48,4 @@ graph TD
    - The LLM **never** generates executable arbitrary Python code.
    - The LLM outputs a constrained JSON execution plan (`operation`, `columns`, `filters`).
    - The backend validates the plan against a strict schema whitelist before invoking deterministic Pandas operations.
+
