@@ -160,3 +160,4 @@ if __name__ == "__main__":
     print(f"Duplicate Rows Count: {df.duplicated().sum()}")
     print("Missing Values Per Column:")
     print(df.isna().sum())
+
