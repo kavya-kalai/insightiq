@@ -166,10 +166,11 @@ with st.sidebar:
         st.markdown("### 🧬 Dataset Versions")
         versions = manager.list_versions()
         ver_options = [v["version_id"] for v in versions]
-        ver_labels = {
-            v["version_id"]: f"{v['version_id']} ({v['name']} - Score: {v['health_score']:.1f if v.get('health_score') is not None else 0.0})"
-            for v in versions
-        }
+        ver_labels = {}
+        for v in versions:
+            sc = v.get("health_score")
+            sc_str = f"{sc:.1f}" if sc is not None else "N/A"
+            ver_labels[v["version_id"]] = f"{v['version_id']} ({v['name']} - Score: {sc_str})"
         selected_ver = st.selectbox(
             "Active Version:",
             ver_options,
