@@ -162,12 +162,12 @@ with st.sidebar:
     st.markdown("---")
 
     # Dataset Version Selector
-    if manager:
+    if manager is not None:
         st.markdown("### 🧬 Dataset Versions")
         versions = manager.list_versions()
         ver_options = [v["version_id"] for v in versions]
         ver_labels = {
-            v["version_id"]: f"{v['version_id']} ({v['name']} - Score: {v['health_score']:.1f})"
+            v["version_id"]: f"{v['version_id']} ({v['name']} - Score: {v['health_score']:.1f if v.get('health_score') is not None else 0.0})"
             for v in versions
         }
         selected_ver = st.selectbox(
@@ -197,10 +197,12 @@ with st.sidebar:
 st.markdown('<div class="main-header">InsightIQ Autonomous Data Platform</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-header">Unified Data Profiling, Automated Cleaning, Interactive EDA, and Evidence-First AI Analytics</div>', unsafe_allow_html=True)
 
-if not manager:
+if manager is None:
     st.warning("Please load or upload a dataset from the sidebar to begin.")
     st.stop()
+    raise SystemExit(0)
 
+assert manager is not None
 current_version = manager.get_active_version()
 df = current_version.df
 
@@ -343,9 +345,11 @@ with tab_cleaner:
                         applied_recipes=approved_recipes,
                         diffs=diffs,
                     )
+                    old_score = current_version.health_score if current_version.health_score is not None else 0.0
+                    new_score = new_ver.health_score if new_ver.health_score is not None else 0.0
                 st.success(
                     f"Created version `{new_ver.version_id}`! "
-                    f"Health score improved from **{current_version.health_score:.1f}** to **{new_ver.health_score:.1f}**."
+                    f"Health score improved from **{old_score:.1f}** to **{new_score:.1f}**."
                 )
                 
                 # Show Diff Breakdown
@@ -529,8 +533,9 @@ User Query / Upload -> Presentation Layer (Streamlit / FastAPI + React)
     """, language="text")
 
     st.markdown("#### 2. Dataset Version History")
-    all_versions = manager.list_versions()
-    st.table(pd.DataFrame(all_versions))
+    if manager is not None:
+        all_versions = manager.list_versions()
+        st.table(pd.DataFrame(all_versions))
 
     st.markdown("#### 3. Security & Anti-Hallucination Controls")
     security_controls = [
@@ -541,3 +546,4 @@ User Query / Upload -> Presentation Layer (Streamlit / FastAPI + React)
         {"Control": "Dual-Path Fallback", "Status": "Active", "Defense": "System functions with 100% precision even if external LLM APIs fail."},
     ]
     st.table(pd.DataFrame(security_controls))
+
