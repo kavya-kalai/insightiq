@@ -288,13 +288,13 @@ def recommend_chart(
         return "Categorical Frequency Bar Chart", create_top_categories_chart(df, col_x)
 
     # Case 3: Datetime + Numeric -> Time Series Trend Line
-    if (type_x == "datetime" and type_y == "numeric") or (type_x == "numeric" and type_y == "datetime"):
-        date_col = col_x if type_x == "datetime" else (col_y or col_x)
+    if col_y and ((type_x == "datetime" and type_y == "numeric") or (type_x == "numeric" and type_y == "datetime")):
+        date_col = col_x if type_x == "datetime" else col_y
         num_col = col_y if type_x == "datetime" else col_x
         return "Time-Series Trend Line", create_time_series_trend(df, date_col, num_col)
 
     # Case 4: Two Numeric Variables -> Scatter Plot with Linear Trend
-    if type_x == "numeric" and type_y == "numeric" and col_y:
+    if col_y and type_x == "numeric" and type_y == "numeric":
         scatter_df = pd.DataFrame({
             col_x: pd.to_numeric(df[col_x], errors="coerce"),
             col_y: pd.to_numeric(df[col_y], errors="coerce"),
@@ -331,8 +331,8 @@ def recommend_chart(
         return "Bivariate Scatter Plot with Linear Trend", fig
 
     # Case 5: Categorical + Numeric -> Aggregated Bar Chart
-    if (type_x == "categorical" and type_y == "numeric") or (type_x == "numeric" and type_y == "categorical"):
-        cat = col_x if type_x == "categorical" else (col_y or col_x)
+    if col_y and ((type_x == "categorical" and type_y == "numeric") or (type_x == "numeric" and type_y == "categorical")):
+        cat = col_x if type_x == "categorical" else col_y
         num = col_y if type_x == "categorical" else col_x
         return "Categorical Metric Aggregation", create_top_categories_chart(df, cat, num)
 
