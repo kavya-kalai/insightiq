@@ -3,7 +3,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Literal
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel
 
 
 OperationType = Literal[
@@ -20,21 +20,21 @@ class FilterCondition(BaseModel):
     """Safe equality/membership filter applied before execution."""
     column: str
     operator: Literal["==", "!=", ">", "<", ">=", "<=", "in"] = "=="
-    value: Any
+    value: Any = None
 
 
 class ExecutionPlan(BaseModel):
     """Constrained execution plan produced by the planner and validated by backend."""
-    operation: OperationType
+    operation: OperationType = "unsupported"
     target_column: str | None = None
     group_column: str | None = None
     date_column: str | None = None
     agg_func: Literal["sum", "mean", "count", "median", "min", "max"] = "sum"
     top_n: int = 5
-    group_values: list[str] = Field(default_factory=list)
+    group_values: list[str] = []
     col1: str | None = None
     col2: str | None = None
-    filters: list[FilterCondition] = Field(default_factory=list)
+    filters: list[FilterCondition] = []
     reasoning: str = ""
     is_supported: bool = True
     unsupported_reason: str | None = None
@@ -55,4 +55,3 @@ class AnalysisResult:
     figure: Any = None  # Interactive Plotly Figure
     used_fallback: bool = False
     error_message: str | None = None
-
