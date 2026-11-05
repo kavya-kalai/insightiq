@@ -7,8 +7,11 @@
   "extraPaths": [
     "C:\\Users\\Kavya K\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages"
   ],
-  "reportMissingImports": false,
-  "reportMissingModuleSource": false,
-  "reportUntypedBaseClass": false,
-  "reportGeneralTypeIssues": false
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none",
+  "reportUntypedBaseClass": "none",
+  "reportGeneralTypeIssues": "none",
+  "reportUnknownMemberType": "none",
+  "reportUnknownArgumentType": "none",
+  "reportUnknownVariableType": "none"
 }

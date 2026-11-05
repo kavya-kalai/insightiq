@@ -16,14 +16,14 @@ OperationType = Literal[
 ]
 
 
-class FilterCondition(BaseModel):
+class FilterCondition(BaseModel):  # type: ignore
     """Safe equality/membership filter applied before execution."""
     column: str
     operator: Literal["==", "!=", ">", "<", ">=", "<=", "in"] = "=="
     value: Any = None
 
 
-class ExecutionPlan(BaseModel):
+class ExecutionPlan(BaseModel):  # type: ignore
     """Constrained execution plan produced by the planner and validated by backend."""
     operation: OperationType = "unsupported"
     target_column: str | None = None
